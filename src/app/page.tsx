@@ -2,6 +2,7 @@
 
 import HistoryPopup1 from "@/components/Historypopup1";
 import Historypopup2 from "@/components/Historypopup2";
+import Historypopup3 from "@/components/Historypopup3";
 import React, { useState } from "react";
 
 const data = [
@@ -50,6 +51,7 @@ const chartData = [
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
+  const [isModalOpen2, setIsModalOpen2] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -58,6 +60,9 @@ export default function Home() {
   const handleOpenModal1 = () => {
     setIsModalOpen1(true);
   };
+  const handleOpenModal2 = () => {
+    setIsModalOpen2(true);
+  };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -65,6 +70,9 @@ export default function Home() {
 
   const handleCloseModal1 = () => {
     setIsModalOpen1(false);
+  };
+  const handleCloseModal2 = () => {
+    setIsModalOpen2(false);
   };
 
   return (
@@ -78,9 +86,15 @@ export default function Home() {
 
       <button
         onClick={handleOpenModal1}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mb-4"
       >
         Open History Popup 2
+      </button>
+      <button
+        onClick={handleOpenModal2}
+        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        Open History Popup 3
       </button>
 
       {isModalOpen && (
@@ -97,6 +111,12 @@ export default function Home() {
           onClose={handleCloseModal1}
           data={data}
           chartData={chartData}
+        />
+      )}
+      {isModalOpen2 && (
+        <Historypopup3
+          title="Patient Health Questionnaire (PHQ-9)"
+          onClose={handleCloseModal2}
         />
       )}
     </main>
