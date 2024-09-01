@@ -76,8 +76,7 @@ const HistoryPopup1: React.FC<HistoryPopupProps> = ({
             {/* Table */}
             <div className="overflow-x-auto w-full max-h-80 overflow-y-auto">
               <table className="min-w-full bg-white border-collapse border border-gray-200">
-                
-                  <thead className="bg-gray-100  text-[12px]">
+                <thead className="bg-gray-100  text-[12px]">
                   <tr>
                     {Object.keys(tableData[0] || {}).map((key) => (
                       <th
@@ -86,15 +85,14 @@ const HistoryPopup1: React.FC<HistoryPopupProps> = ({
                       >
                         <div>
                           {key === "Add to Note" ? (
-                            <div className="flex flex-row justify-between items-center">
-                              <span>
-                                <input
-                                  type="checkbox"
-                                  // checked={checkboxValues[rowIndex]}
-                                  // onChange={() => handleCheckboxChange(rowIndex)}
-                                  className="cursor-pointer"
-                                />
-                              </span>
+                            <div className="flex flex-row gap-3 items-center">
+                              <input
+                                type="checkbox"
+                                // checked={checkboxValues[rowIndex]}
+                                // onChange={() => handleCheckboxChange(rowIndex)}
+                                className="cursor-pointer"
+                              />
+
                               <div>Add to Note</div>
                             </div>
                           ) : (
