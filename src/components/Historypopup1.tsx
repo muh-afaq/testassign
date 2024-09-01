@@ -76,20 +76,35 @@ const HistoryPopup1: React.FC<HistoryPopupProps> = ({
             {/* Table */}
             <div className="overflow-x-auto w-full max-h-80 overflow-y-auto">
               <table className="min-w-full bg-white border-collapse border border-gray-200">
-                <thead className="bg-gray-100  text-[12px]">
+                
+                  <thead className="bg-gray-100  text-[12px]">
                   <tr>
                     {Object.keys(tableData[0] || {}).map((key) => (
                       <th
                         key={key}
-                        className="py-2 px-4 border-b border-gray-200 text-gray-700 font-medium"
+                        className="py-2 px-4 border-b border-gray-200   text-gray-700 font-medium"
                       >
-                        <div className="flex flex-row justify-between items-center">
-                          {key}
-                          {key !== "Add to Note" && (
-                            <span className="flex flex-col gap-0">
-                              <IoIosArrowUp className="cursor-pointer text-[12px]" />
-                              <IoIosArrowDown className="cursor-pointer text-[12px]" />
-                            </span>
+                        <div>
+                          {key === "Add to Note" ? (
+                            <div className="flex flex-row justify-between items-center">
+                              <span>
+                                <input
+                                  type="checkbox"
+                                  // checked={checkboxValues[rowIndex]}
+                                  // onChange={() => handleCheckboxChange(rowIndex)}
+                                  className="cursor-pointer"
+                                />
+                              </span>
+                              <div>Add to Note</div>
+                            </div>
+                          ) : (
+                            <div className="flex flex-row justify-between items-center">
+                              {key}
+                              <span className="flex flex-col gap-0">
+                                <IoIosArrowUp className="cursor-pointer text-[12px] " />
+                                <IoIosArrowDown className="cursor-pointer text-[12px]" />
+                              </span>
+                            </div>
                           )}
                         </div>
                       </th>
