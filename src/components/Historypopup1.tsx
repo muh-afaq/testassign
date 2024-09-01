@@ -8,7 +8,6 @@ import { IoClose } from "react-icons/io5";
 interface HistoryPopupProps {
   title: string;
   onClose: () => void;
-  tabTitle: string;
   data: { icon: string; label: string }[];
   tableData: { [key: string]: string | number }[];
 }
@@ -16,7 +15,6 @@ interface HistoryPopupProps {
 const HistoryPopup1: React.FC<HistoryPopupProps> = ({
   title,
   onClose,
-  tabTitle,
   data,
   tableData,
 }) => {

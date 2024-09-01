@@ -113,7 +113,6 @@ export default function Home() {
         <HistoryPopup1
           title="Patient Health Questionnaire (PHQ-9)"
           onClose={handleCloseModal}
-          tabTitle="History"
           data={data}
           tableData={tableData}
         />
