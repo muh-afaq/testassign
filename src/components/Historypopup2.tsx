@@ -12,9 +12,7 @@ import {
   Title,
   Tooltip,
   Legend,
-
 } from "chart.js";
-import { Chart, Plugin, ScriptableContext } from "chart.js";
 
 ChartJS.register(
   CategoryScale,
@@ -98,10 +96,6 @@ const Historypopup2: React.FC<HistoryPopupProps> = ({
       end: currentEnd.toISOString().split("T")[0],
     });
   };
-
- 
-
-  
 
   // Chart configuration
   const chartOptions = {
