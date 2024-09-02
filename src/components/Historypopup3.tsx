@@ -167,10 +167,18 @@ const Historypopup3: React.FC<HistoryPopupProps> = ({
 
             <div className="flex justify-between mt-1">
               <div>Score Calculation</div>
-              <div className="flex items-center gap-2 rounded-lg p-1 bg-green-200">
-                <span className="text-green-900 text-sm">
-                  Total Score {totalScore}
-                </span>
+              <div
+                className={`flex items-center gap-2 rounded-lg p-1 ${
+                  totalScore >= 0 && totalScore <= 4
+                    ? "bg-white text-gray-700"
+                    : totalScore >= 5 && totalScore <= 9
+                    ? "bg-green-200 text-green-900"
+                    : totalScore >= 10 && totalScore <= 14
+                    ? "bg-yellow-200 text-yellow-900"
+                    : "bg-red-200 text-red-900"
+                }`}
+              >
+                <span className=" text-sm">Total Score {totalScore}</span>
               </div>
             </div>
 
