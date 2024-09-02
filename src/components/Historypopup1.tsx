@@ -4,6 +4,27 @@ import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
+import Historypopup2 from "./Historypopup2";
+
+const chartData = [
+  { date: "03/25/2024", score: 12.5 },
+  { date: "03/26/2024", score: 15.0 },
+  { date: "03/27/2024", score: 10.0 },
+  { date: "03/28/2024", score: 15.0 },
+  { date: "03/29/2024", score: 14.0 },
+  { date: "03/30/2024", score: 17.0 },
+  { date: "04/01/2024", score: 19.0 },
+  { date: "04/02/2024", score: 5.0 },
+  { date: "04/03/2024", score: 15.0 },
+  { date: "04/04/2024", score: 4.0 },
+  { date: "04/05/2024", score: 10.0 },
+  { date: "04/06/2024", score: 22.0 },
+  { date: "04/07/2024", score: 10.0 },
+  { date: "04/08/2024", score: 20.0 },
+  { date: "04/09/2024", score: 10.0 },
+  { date: "04/10/2024", score: 25.0 },
+  // More data points
+];
 
 interface HistoryPopupProps {
   title: string;
@@ -170,7 +191,12 @@ const HistoryPopup1: React.FC<HistoryPopupProps> = ({
         {selectedTab === "Data View" && (
           <div className="p-4 bg-gray-50 rounded">
             {/* Data View content can go here */}
-            <p>Data View content</p>
+            <Historypopup2
+              // title="Patient Health Questionnaire (PHQ-9)"
+              // onClose={handleCloseModal1}
+              // data={data}
+              chartData={chartData}
+            />
           </div>
         )}
       </div>

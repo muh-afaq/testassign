@@ -25,19 +25,19 @@ ChartJS.register(
 );
 
 interface HistoryPopupProps {
-  onClose: () => void;
-  title: string;
-  data: { icon: string; label: string }[];
+  // onClose: () => void;
+  // title: string;
+  // data: { icon: string; label: string }[];
   chartData: { date: string; score: number }[];
 }
 
 const Historypopup2: React.FC<HistoryPopupProps> = ({
-  title,
-  onClose,
-  data,
+  // title,
+  // onClose,
+  // data,
   chartData,
 }) => {
-  const [selectedTab, setSelectedTab] = useState("Data View");
+  // const [selectedTab, setSelectedTab] = useState("Data View");
   const [filteredChartData, setFilteredChartData] = useState(chartData);
   const [dateRange, setDateRange] = useState({ start: "", end: "" });
   const [range, setRange] = useState(7); // Default to 7 days
@@ -145,105 +145,107 @@ const Historypopup2: React.FC<HistoryPopupProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-4xl mx-auto p-6">
-        {/* Modal Header */}
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">{title}</h2>
-          <button
-            onClick={onClose}
-            className="text-gray-600 hover:text-gray-800"
-          >
-            <IoClose className=" text-lg" />
-          </button>
-        </div>
+    // <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    //   <div className="bg-white rounded-lg shadow-lg w-full max-w-4xl mx-auto p-6">
+    //     {/* Modal Header */}
+    //     <div className="flex justify-between items-center mb-4">
+    //       <h2 className="text-xl font-semibold">{title}</h2>
+    //       <button
+    //         onClick={onClose}
+    //         className="text-gray-600 hover:text-gray-800"
+    //       >
+    //         <IoClose className=" text-lg" />
+    //       </button>
+    //     </div>
 
-        {/* Tab Section */}
-        <div className="mb-4 border-b border-gray-200 flex">
-          {data.map((item, index) => (
-            <button
-              key={index}
-              onClick={() => setSelectedTab(item.label)}
-              className={`${
-                selectedTab === item.label
-                  ? "text-blue-600 border-blue-600"
-                  : "text-gray-600 border-transparent"
-              } flex items-center gap-2 p-2 border-b-2 font-semibold`}
-            >
-              {item.icon} {item.label}
-            </button>
-          ))}
-        </div>
+    //     {/* Tab Section */}
+    //     <div className="mb-4 border-b border-gray-200 flex">
+    //       {data.map((item, index) => (
+    //         <button
+    //           key={index}
+    //           onClick={() => setSelectedTab(item.label)}
+    //           className={`${
+    //             selectedTab === item.label
+    //               ? "text-blue-600 border-blue-600"
+    //               : "text-gray-600 border-transparent"
+    //           } flex items-center gap-2 p-2 border-b-2 font-semibold`}
+    //         >
+    //           {item.icon} {item.label}
+    //         </button>
+    //       ))}
+    //     </div>
 
-        {/* Visit of days */}
-        <div className="mb-4 flex gap-2">
-          <div
-            className={`cursor-pointer px-2 py-1 rounded ${
-              range === 7 ? "bg-blue-500 text-white" : "bg-gray-200"
-            }`}
-            onClick={() => handleRangeClick(7)}
-          >
-            7 Days
-          </div>
-          <div
-            className={`cursor-pointer px-2 py-1 rounded ${
-              range === 30 ? "bg-blue-500 text-white" : "bg-gray-200"
-            }`}
-            onClick={() => handleRangeClick(30)}
-          >
-            30 Days
-          </div>
-          <div
-            className={`cursor-pointer px-2 py-1 rounded ${
-              range === 90 ? "bg-blue-500 text-white" : "bg-gray-200"
-            }`}
-            onClick={() => handleRangeClick(90)}
-          >
-            90 Days
-          </div>
+    <>
+      {/* Visit of days */}
+      <div className="mb-4 flex gap-2">
+        <div
+          className={`cursor-pointer px-2 py-1 rounded ${
+            range === 7 ? "bg-blue-500 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => handleRangeClick(7)}
+        >
+          7 Days
         </div>
-
-        {/* Date range and navigation */}
-        <div className="mb-4 flex justify-end items-center gap-4 border p-2 rounded">
-          <div>{`${dateRange.start} - ${dateRange.end}`}</div>
-          <div className="flex items-center gap-2">
-            <IoIosArrowBack
-              className="cursor-pointer"
-              onClick={() => handleArrowClick("back")}
-            />
-            <IoIosArrowForward
-              className="cursor-pointer"
-              onClick={() => handleArrowClick("forward")}
-            />
-          </div>
+        <div
+          className={`cursor-pointer px-2 py-1 rounded ${
+            range === 30 ? "bg-blue-500 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => handleRangeClick(30)}
+        >
+          30 Days
         </div>
-
-        {/* Chart Display */}
-        <div className="h-60 w-full">
-          <Line data={chartDataConfig} options={chartOptions} />
-        </div>
-
-        {/* Color nodes */}
-        <div className="flex text-[12px] justify-center items-center mt-4">
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-white border" />
-            <div>Depression</div>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-green-300 border" />
-            <div>Mid Depression</div>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-yellow-300 border" />
-            <div>Moderate Depression</div>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-red-300 border" />
-            <div>Severe Depression</div>
-          </div>
+        <div
+          className={`cursor-pointer px-2 py-1 rounded ${
+            range === 90 ? "bg-blue-500 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => handleRangeClick(90)}
+        >
+          90 Days
         </div>
       </div>
-    </div>
+
+      {/* Date range and navigation */}
+      <div className="mb-4 flex justify-end items-center gap-4 border p-2 rounded">
+        <div>{`${dateRange.start} - ${dateRange.end}`}</div>
+        <div className="flex items-center gap-2">
+          <IoIosArrowBack
+            className="cursor-pointer"
+            onClick={() => handleArrowClick("back")}
+          />
+          <IoIosArrowForward
+            className="cursor-pointer"
+            onClick={() => handleArrowClick("forward")}
+          />
+        </div>
+      </div>
+
+      {/* Chart Display */}
+      <div className="h-60 w-full">
+        <Line data={chartDataConfig} options={chartOptions} />
+      </div>
+
+      {/* Color nodes */}
+      <div className="flex text-[12px] justify-center items-center mt-4">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-white border" />
+          <div>Depression</div>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-green-300 border" />
+          <div>Mid Depression</div>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-yellow-300 border" />
+          <div>Moderate Depression</div>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-red-300 border" />
+          <div>Severe Depression</div>
+        </div>
+      </div>
+    </>
+    //   {/* </div>
+    // </div> */}
   );
 };
 

@@ -50,25 +50,25 @@ const tableData = [
   // Additional data rows
 ];
 
-const chartData = [
-  { date: "03/25/2024", score: 12.5 },
-  { date: "03/26/2024", score: 15.0 },
-  { date: "03/27/2024", score: 10.0 },
-  { date: "03/28/2024", score: 15.0 },
-  { date: "03/29/2024", score: 14.0 },
-  { date: "03/30/2024", score: 17.0 },
-  { date: "04/01/2024", score: 19.0 },
-  { date: "04/02/2024", score: 5.0 },
-  { date: "04/03/2024", score: 15.0 },
-  { date: "04/04/2024", score: 4.0 },
-  { date: "04/05/2024", score: 10.0 },
-  { date: "04/06/2024", score: 22.0 },
-  { date: "04/07/2024", score: 10.0 },
-  { date: "04/08/2024", score: 20.0 },
-  { date: "04/09/2024", score: 10.0 },
-  { date: "04/10/2024", score: 25.0 },
-  // More data points
-];
+// const chartData = [
+//   { date: "03/25/2024", score: 12.5 },
+//   { date: "03/26/2024", score: 15.0 },
+//   { date: "03/27/2024", score: 10.0 },
+//   { date: "03/28/2024", score: 15.0 },
+//   { date: "03/29/2024", score: 14.0 },
+//   { date: "03/30/2024", score: 17.0 },
+//   { date: "04/01/2024", score: 19.0 },
+//   { date: "04/02/2024", score: 5.0 },
+//   { date: "04/03/2024", score: 15.0 },
+//   { date: "04/04/2024", score: 4.0 },
+//   { date: "04/05/2024", score: 10.0 },
+//   { date: "04/06/2024", score: 22.0 },
+//   { date: "04/07/2024", score: 10.0 },
+//   { date: "04/08/2024", score: 20.0 },
+//   { date: "04/09/2024", score: 10.0 },
+//   { date: "04/10/2024", score: 25.0 },
+//   // More data points
+// ];
 
 const questions = [
   { id: 1, question: "Little interest or pleasure in doing things" },
@@ -124,15 +124,15 @@ export default function Home() {
         onClick={handleOpenModal}
         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mb-4"
       >
-        Open History Popup 1
+        Open History Popup 1 and 2
       </button>
 
-      <button
+      {/* <button
         onClick={handleOpenModal1}
         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mb-4"
       >
         Open History Popup 2
-      </button>
+      </button> */}
       <button
         onClick={handleOpenModal2}
         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
@@ -148,14 +148,14 @@ export default function Home() {
           tableData={tableData}
         />
       )}
-      {isModalOpen1 && (
+      {/* {isModalOpen1 && (
         <Historypopup2
-          title="Patient Health Questionnaire (PHQ-9)"
-          onClose={handleCloseModal1}
-          data={data}
+          // title="Patient Health Questionnaire (PHQ-9)"
+          // onClose={handleCloseModal1}
+          // data={data}
           chartData={chartData}
         />
-      )}
+      )} */}
       {isModalOpen2 && (
         <Historypopup3
           title="Patient Health Questionnaire (PHQ-9)"
