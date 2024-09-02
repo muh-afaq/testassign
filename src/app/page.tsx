@@ -25,6 +25,48 @@ const tableData = [
     "Total Score": 25,
     "Add to Note": "No",
   },
+  {
+    "Date/Time": "01-21-24 00:00",
+    Note: "Out Pt, New Pt, In-Person",
+    "Filled by": "Patient",
+    "Total Score": 25,
+    "Add to Note": "No",
+  },
+  {
+    "Date/Time": "01-21-24 00:00",
+    Note: "Out Pt, New Pt, In-Person",
+    "Filled by": "Patient",
+    "Total Score": 25,
+    "Add to Note": "No",
+  },
+  {
+    "Date/Time": "01-21-24 00:00",
+    Note: "Out Pt, New Pt, In-Person",
+    "Filled by": "Patient",
+    "Total Score": 25,
+    "Add to Note": "No",
+  },
+  {
+    "Date/Time": "01-21-24 00:00",
+    Note: "Out Pt, New Pt, In-Person",
+    "Filled by": "Patient",
+    "Total Score": 25,
+    "Add to Note": "No",
+  },
+  {
+    "Date/Time": "01-21-24 00:00",
+    Note: "Out Pt, New Pt, In-Person",
+    "Filled by": "Patient",
+    "Total Score": 25,
+    "Add to Note": "No",
+  },
+  {
+    "Date/Time": "01-21-24 00:00",
+    Note: "Out Pt, New Pt, In-Person",
+    "Filled by": "Patient",
+    "Total Score": 25,
+    "Add to Note": "No",
+  },
   // Additional data rows
 ];
 
@@ -46,6 +88,27 @@ const chartData = [
   { date: "04/09/2024", score: 10.0 },
   { date: "04/10/2024", score: 25.0 },
   // More data points
+];
+
+const questions = [
+  { id: 1, question: "Little interest or pleasure in doing things" },
+  { id: 2, question: "Feeling down, depressed, or hopeless" },
+  { id: 3, question: "Feeling down, depressed, or hopeless" },
+  { id: 4, question: "Feeling down, depressed, or hopeless" },
+  { id: 5, question: "Feeling down, depressed, or hopeless" },
+  { id: 6, question: "Feeling down, depressed, or hopeless" },
+  { id: 7, question: "Feeling down, depressed, or hopeless" },
+  // Add more questions as needed
+];
+
+const dates = [
+  "03/25/2024 09:27:30",
+  "03/26/2024 09:27:30",
+  "03/27/2024 09:27:30",
+  "03/28/2024 09:27:30",
+  "03/29/2024 09:27:30",
+
+  // Add more dates as needed
 ];
 
 export default function Home() {
@@ -117,6 +180,8 @@ export default function Home() {
         <Historypopup3
           title="Patient Health Questionnaire (PHQ-9)"
           onClose={handleCloseModal2}
+          questions={questions}
+          dates={dates}
         />
       )}
     </main>

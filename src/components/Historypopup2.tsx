@@ -101,6 +101,11 @@ const Historypopup2: React.FC<HistoryPopupProps> = ({
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false, // Ensure it takes full height/width
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
     // plugins: [backgroundColorPlugin],
     scales: {
       x: {
