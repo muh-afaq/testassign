@@ -22,7 +22,7 @@ const HistoryPopup1: React.FC<HistoryPopupProps> = ({
 
   // State to manage checkbox values
   const [checkboxValues, setCheckboxValues] = useState(
-    tableData.map((row) => (row["Add to Note"] === "Yes" ? true : false))
+    tableData.map((row) => (row["Add_to_Note"] === "Yes" ? true : false))
   );
 
   // Toggle checkbox and update the respective row value
@@ -32,7 +32,7 @@ const HistoryPopup1: React.FC<HistoryPopupProps> = ({
     setCheckboxValues(updatedCheckboxValues);
 
     // Update the tableData to reflect "Yes" or "No"
-    tableData[index]["Add to Note"] = updatedCheckboxValues[index]
+    tableData[index]["Add_to_Note"] = updatedCheckboxValues[index]
       ? "Yes"
       : "No";
   };
@@ -76,35 +76,55 @@ const HistoryPopup1: React.FC<HistoryPopupProps> = ({
               <table className="min-w-full bg-white border-collapse border border-gray-200">
                 <thead className="bg-gray-100  text-[12px]">
                   <tr>
-                    {Object.keys(tableData[0] || {}).map((key) => (
-                      <th
-                        key={key}
-                        className="py-2 px-4 border-b border-gray-200   text-gray-700 font-medium"
-                      >
-                        <div>
-                          {key === "Add to Note" ? (
-                            <div className="flex flex-row gap-3 items-center">
-                              <input
-                                type="checkbox"
-                                // checked={checkboxValues[rowIndex]}
-                                // onChange={() => handleCheckboxChange(rowIndex)}
-                                className="cursor-pointer"
-                              />
+                    <th scope="col" className="py-3  px-4 text-left ">
+                      <div className="flex justify-between">
+                        <div> Date/Time</div>
+                        <span className="flex flex-col gap-0">
+                          <IoIosArrowUp className="cursor-pointer text-[12px] " />
+                          <IoIosArrowDown className="cursor-pointer text-[12px]" />
+                        </span>
+                      </div>
+                    </th>
+                    <th scope="col" className="py-3  px-4 text-left ">
+                      <div className="flex justify-between">
+                        <div> Note</div>
+                        <span className="flex flex-col gap-0">
+                          <IoIosArrowUp className="cursor-pointer text-[12px] " />
+                          <IoIosArrowDown className="cursor-pointer text-[12px]" />
+                        </span>
+                      </div>
+                    </th>
 
-                              <div>Add to Note</div>
-                            </div>
-                          ) : (
-                            <div className="flex flex-row justify-between items-center">
-                              {key}
-                              <span className="flex flex-col gap-0">
-                                <IoIosArrowUp className="cursor-pointer text-[12px] " />
-                                <IoIosArrowDown className="cursor-pointer text-[12px]" />
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      </th>
-                    ))}
+                    <th scope="col" className="py-3  px-4 text-left ">
+                      <div className="flex justify-between">
+                        <div> Filled by</div>
+                        <span className="flex flex-col gap-0">
+                          <IoIosArrowUp className="cursor-pointer text-[12px] " />
+                          <IoIosArrowDown className="cursor-pointer text-[12px]" />
+                        </span>
+                      </div>
+                    </th>
+                    <th scope="col" className="py-3  px-4 text-left  ">
+                      <div className="flex justify-between">
+                        <div> Total Score</div>
+                        <span className="flex flex-col gap-0">
+                          <IoIosArrowUp className="cursor-pointer text-[12px] " />
+                          <IoIosArrowDown className="cursor-pointer text-[12px]" />
+                        </span>
+                      </div>
+                    </th>
+
+                    <th scope="col" className="py-3 px-4 text-left">
+                      <div className="flex gap-2">
+                        <input
+                          type="checkbox"
+                          // checked={checkboxValues[rowIndex]}
+                          // onChange={() => handleCheckboxChange(rowIndex)}
+                          className="cursor-pointer"
+                        />
+                        <div> Add to Note</div>
+                      </div>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -115,7 +135,7 @@ const HistoryPopup1: React.FC<HistoryPopupProps> = ({
                           key={colIndex}
                           className="py-2 px-4 border-b border-gray-200 text-gray-700 text-[12px]"
                         >
-                          {key === "Total Score" ? (
+                          {key === "Total_Score" ? (
                             <div className="flex items-center gap-2">
                               <div className="bg-blue-300 rounded-2xl w-10 flex justify-center text-blue-600 items-center p-1">
                                 {row[key]}
@@ -123,7 +143,7 @@ const HistoryPopup1: React.FC<HistoryPopupProps> = ({
                               <FaEye className="text-blue-500" />
                               <div>View</div>
                             </div>
-                          ) : key === "Add to Note" ? (
+                          ) : key === "Add_to_Note" ? (
                             <div className="flex flex-row gap-2 items-center">
                               <input
                                 type="checkbox"
