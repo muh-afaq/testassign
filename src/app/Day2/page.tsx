@@ -10,6 +10,11 @@ import SNAP_IV from "@/screen/SNAP_IV";
 import PCL_5 from "@/screen/PCL_5";
 import Y_BOCS from "@/screen/Y_BOCS";
 import AIMS from "@/screen/AIMS";
+import DAST_10 from "@/screen/DAST_10";
+import AUDIT from "@/screen/AUDIT";
+import HAM_D from "@/screen/HAM_D";
+import PHQ_9 from "@/screen/PHQ_9";
+import MOCA from "@/screen/MOCA";
 
 const Page: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState("");
@@ -31,10 +36,10 @@ const Page: React.FC = () => {
   const renderContent = () => {
     if (selectedTab === "GAD-7") {
       return <GDA_7 />;
-    }
-    // Add more conditions for other tabs and render respective components
-    else if (selectedTab === "Dashboard") {
+    } else if (selectedTab === "Dashboard") {
       return <Dashboard />;
+    } else if (selectedTab === "PHQ-9") {
+      return <PHQ_9 />;
     } else if (selectedTab === "SNAP-IV") {
       return <SNAP_IV />;
     } else if (selectedTab === "PCL-5") {
@@ -43,6 +48,14 @@ const Page: React.FC = () => {
       return <Y_BOCS />;
     } else if (selectedTab === "AIMS") {
       return <AIMS />;
+    } else if (selectedTab === "DAST-10") {
+      return <DAST_10 />;
+    } else if (selectedTab === "AUDIT") {
+      return <AUDIT />;
+    } else if (selectedTab === "HAM-D") {
+      return <HAM_D />;
+    } else if (selectedTab === "MOCA") {
+      return <MOCA />;
     } else {
       return (
         <div className="text-gray-500">Select a tab to view its content.</div>
@@ -91,7 +104,7 @@ const Page: React.FC = () => {
             <MdHistory />
             <span>History</span>
           </div>
-          <div className="flex items-center gap-2 border p-1 rounded-sm cursor-pointer">
+          <div className="flex items-center gap-2 bg-blue-900 text-white border p-1 rounded-sm cursor-pointer">
             <LiaSaveSolid />
             <span>Save</span>
           </div>

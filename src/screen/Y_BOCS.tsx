@@ -40,10 +40,10 @@ const Y_BOCS = () => {
       id: 2,
       hQuestion: "How often have been bothered by any of the following problems?",
       tablehead: [
-        "None",
+        "None ",
         "Mild",
-        "Definite but manageable",
-        "Substantial impairment",
+        "Definite manageable",
+        "Substantial ",
         "Incapacitating",
       ],
     },
@@ -163,14 +163,14 @@ const Y_BOCS = () => {
         <div className="overflow-x-auto mb-6">
           {questions.map((question, index) => (
             <div key={question.id} className="mb-4">
-              <table className="w-full text-sm  text-left text-gray-500 bg-white rounded-md mb-2">
+              <table className="w-full text-[12px]  text-left text-gray-500 bg-white rounded-md mb-2">
                 <thead>
                   <tr>
-                    <th className="px-4 py-2 w-full bg-gray-100">
+                    <th className="px-4 py-2 w-[40%] bg-gray-100">
                       {headers[index].id} {headers[index].hQuestion}
                     </th>
                     {headers[index].tablehead.map((header, idx) => (
-                      <th key={idx} className="px-4 py-2 bg-gray-100 " >
+                      <th key={idx} className="px-4 py-2 w-[10px] items-center text-pretty bg-gray-100 " >
                         {header}
                       </th>
                     ))}
@@ -178,9 +178,9 @@ const Y_BOCS = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="px-4 py-2 w-full">{question.question}</td>
+                    <td className="px-4 py-2 w-[40%] text-left">{question.question}</td>
                     {valueLabels.map((label) => (
-                      <td key={label.value} className="px-4 py-2">
+                      <td key={label.value} className="px-4 py-2 w-[10px] items-center">
                         <input
                           type="radio"
                           name={`question-${question.id}`}

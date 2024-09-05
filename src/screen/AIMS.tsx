@@ -60,6 +60,12 @@ const AIMS = () => {
     { value: 4, label: "+4" },
   ];
 
+  const valueLabelsforTwo = [
+    { value: 0, label: "Yes" },
+    { value: 1, label: "No" },
+
+  ];
+
   const handleRadioChange = (questionId: number, value: number) => {
     setAnswers((prev) => {
       const newAnswers = { ...prev, [questionId]: value };
@@ -172,6 +178,18 @@ const AIMS = () => {
           </table>
         </div>
       </div>
+      {/* Score Interpretation */}
+      <div className="flex justify-between border rounded-md bg-white shadow-md p-2">
+        <div className="flex gap-2 items-center">
+          <div className="text-sm">Score Interpretation</div>
+          
+        </div>
+        <div className="flex items-center text-sm gap-2">
+          <div className={`flex items-center gap-2 rounded-2xl px-4 ${colorName}`}>
+            <span>Total Score: {totalScore}</span>
+          </div>
+        </div>
+      </div>
       <div>
         <div className="bg-gray-100 p-1">
           <span className="text-black w-full text-sm font-medium">
@@ -182,7 +200,7 @@ const AIMS = () => {
         <div className="overflow-x-auto mb-6">
           <table className="w-full text-sm  text-gray-500 bg-white shadow-lg rounded-md">
             <TableBody
-              valueLabels={valueLabels}
+              valueLabels={valueLabelsforTwo}
               questions={Questions11to14}
               handleRadioChange={handleRadioChange}
             />
