@@ -1,9 +1,121 @@
-import React, { useState } from 'react';
+"use client";
+import QS_MOCA from "@/constant/QS_MOCA";
+import TableHead from "@/constant/TableHead";
+import TrialSection from "@/constant/TrialSection";
+import React, { useState } from "react";
+
+interface Question {
+  id: number;
+  question: string;
+  options: { value: number; label: string }[];
+}
 
 const MOCA = () => {
   const [scores, setScores] = useState<{ [key: string]: number }>({});
   const [totalScore, setTotalScore] = useState(0);
 
+  const questionsVE: Question[] = [
+    {
+      id: 1,
+      question: "Ask Patient to trace the diagram in order",
+      options: [
+        { value: 0, label: "Not Completed" },
+        { value: 1, label: "+1 Completed Correctly" },
+      ],
+    },
+    {
+      id: 2,
+      question: "Ask Patient to copy cube",
+      options: [
+        { value: 0, label: "Not Completed" },
+        { value: 1, label: "+1 Completed Correctly" },
+      ],
+    },
+
+    {
+      id: 3,
+      question: "Ask patient to draw a clock (ten past eleven)",
+      options: [
+        {
+          value: 3,
+          label:
+            "+3 Correctly drew all features (i.e., contour, numbers, and hands)",
+        },
+        {
+          value: 2,
+          label:
+            "+2 Correctly drew two out of three features (i.e., two out of contour, numbers, and hands)",
+        },
+        { value: 1, label: "+1 Correctly drew contour only" },
+        { value: 1, label: "+1 Correctly drew numbers only" },
+        { value: 1, label: "+1 Correctly drew hands only" },
+        { value: 0, label: "None of the above" },
+      ],
+    },
+  ];
+  const questionsNeaming: Question[] = [
+    {
+      id: 1,
+      question: "Ask Patient to trace the diagram in order",
+      options: [
+        { value: 0, label: "Not Completed" },
+        { value: 1, label: "+1 Completed Correctly" },
+      ],
+    },
+    {
+      id: 2,
+      question: "Ask Patient to copy cube",
+      options: [
+        { value: 0, label: "Not Completed" },
+        { value: 1, label: "+1 Completed Correctly" },
+      ],
+    },
+
+    {
+      id: 3,
+      question: "Ask Patient to copy cube",
+      options: [
+        { value: 0, label: "Not Completed" },
+        { value: 1, label: "+1 Completed Correctly" },
+      ],
+    },
+  ];
+  const questionsAbstraction: Question[] = [
+    {
+      id: 1,
+      question: "Ask Patient to trace the diagram in order",
+      options: [
+        { value: 0, label: "Not Completed" },
+        { value: 1, label: "+1 Completed Correctly" },
+      ],
+    },
+    {
+      id: 2,
+      question: "Ask Patient to copy cube",
+      options: [
+        { value: 0, label: "Not Completed" },
+        { value: 1, label: "+1 Completed Correctly" },
+      ],
+    },
+  ];
+  const headers: string[] = [
+    "Trial",
+    "Face",
+    "Velvet",
+    "Church",
+    "Daisy",
+    "Red",
+  ];
+  const headersDR: string[] = ["", "Face", "Velvet", "Church", "Daisy", "Red"];
+  const headersOR: string[] = ["Date", "Month", "Day", "place", "City"];
+  const trials = [
+    { trialNumber: "1st Trial", values: [false, true, false, false, true] },
+    { trialNumber: "2nd Trial", values: [false, true, false, false, true] },
+  ];
+  const trialsDR = [
+    { trialNumber: "", values: [false, true, false, false, true] },
+    { trialNumber: "", values: [false, true, false, false, true] },
+  ];
   const handleScoreChange = (section: string, score: number) => {
     setScores((prevScores) => {
       const updatedScores = { ...prevScores, [section]: score };
@@ -18,188 +130,148 @@ const MOCA = () => {
 
   const scoreColor = () => {
     if (totalScore >= 26) {
-      return 'bg-green-100 text-green-800';
+      return "bg-green-100 text-green-800";
     } else if (totalScore >= 0 && totalScore <= 25) {
-      return 'bg-red-100 text-red-800';
+      return "bg-red-100 text-red-800";
     }
-    return '';
+    return "";
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-semibold mb-4">MOCA</h1>
-      <p className="mb-4">Give pt a written form and instruct them as follows</p>
-
-      {/* Visuospatial / Executive Section */}
-      <div className="bg-gray-100 p-4 mb-4 rounded">
-        <h2 className="font-semibold mb-2">Visuospatial / Executive</h2>
-        <div className="grid grid-cols-3 gap-4">
-          {/* Task 1 */}
-          <div>
-            <p>1. Ask patient to trace the diagram in order</p>
-            <div className="flex items-center gap-4">
-              <label>
-                <input
-                  type="radio"
-                  name="trace"
-                  onChange={() => handleScoreChange('trace', 1)}
-                />
-                Completed Correctly
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="trace"
-                  onChange={() => handleScoreChange('trace', 0)}
-                />
-                Not Completed
-              </label>
-            </div>
-          </div>
-          {/* Task 2 */}
-          <div>
-            <p>2. Ask patient to copy cube</p>
-            <div className="flex items-center gap-4">
-              <label>
-                <input
-                  type="radio"
-                  name="cube"
-                  onChange={() => handleScoreChange('cube', 1)}
-                />
-                Completed Correctly
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="cube"
-                  onChange={() => handleScoreChange('cube', 0)}
-                />
-                Not Completed
-              </label>
-            </div>
-          </div>
-          {/* Task 3 */}
-          <div>
-            <p>3. Ask patient to draw a clock (ten past eleven)</p>
-            <div className="flex items-center gap-4">
-              <label>
-                <input
-                  type="radio"
-                  name="clock"
-                  onChange={() => handleScoreChange('clock', 3)}
-                />
-                +3 Correctly drew all features (i.e., contour, numbers, and hands)
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="clock"
-                  onChange={() => handleScoreChange('clock', 2)}
-                />
-                +2 Correctly drew two out of three features (i.e., two out of contour, numbers, and hands)
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="clock"
-                  onChange={() => handleScoreChange('clock', 1)}
-                />
-                +1 Correctly drew contour only
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="clock"
-                  onChange={() => handleScoreChange('clock', 0)}
-                />
-                None of the above
-              </label>
-            </div>
-          </div>
-        </div>
+    <div className="overflow-auto p-4 bg-white rounded-lg shadow-md">
+      <div className="mb-4 text-sm">
+        <p>Give pt a written form and instruct them as follows</p>
       </div>
 
-      {/* Naming Section */}
-      <div className="bg-gray-100 p-4 mb-4 rounded">
-        <h2 className="font-semibold mb-2">Naming</h2>
-        <div className="grid grid-cols-3 gap-4">
-          <div>
-            <p>1. Ask patient to name the first animal</p>
-            <div className="flex items-center gap-4">
-              <label>
-                <input
-                  type="radio"
-                  name="animal1"
-                  onChange={() => handleScoreChange('animal1', 1)}
+      <QS_MOCA
+        title="Visuospatial / Executive"
+        questions={questionsVE}
+        handleScoreChange={handleScoreChange}
+      />
+      <QS_MOCA
+        title="Neaming"
+        questions={questionsNeaming}
+        handleScoreChange={handleScoreChange}
+      />
+      <div>
+        <div className="bg-gray-100 p-2 mb-4">
+          <span className="text-black w-full text-sm font-medium">Memory</span>
+        </div>
+        <div className="text-black w-full text-sm font-thin">
+          Read "Face", "Velvet", "Church", "Daisy", "Red", and ask patient to
+          repaeate (do tow trial and a recall leter in exam)
+        </div>
+        <div className="text-[12px]">Check all the recalled words</div>
+        <div className="w-1/2 bg-blue-800">
+          <table className="text-[12px] border">
+            <TableHead headers={headers} />
+            <tbody className="border">
+              {trials.map((trial, index) => (
+                <TrialSection
+                  key={index}
+                  trialNumber={trial.trialNumber}
+                  initialValues={trial.values}
                 />
-                Named lion
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="animal1"
-                  onChange={() => handleScoreChange('animal1', 0)}
-                />
-                Did not name lion
-              </label>
-            </div>
-          </div>
-          <div>
-            <p>2. Ask patient to name the second animal</p>
-            <div className="flex items-center gap-4">
-              <label>
-                <input
-                  type="radio"
-                  name="animal2"
-                  onChange={() => handleScoreChange('animal2', 1)}
-                />
-                Named rhinoceros
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="animal2"
-                  onChange={() => handleScoreChange('animal2', 0)}
-                />
-                Did not name rhinoceros
-              </label>
-            </div>
-          </div>
-          <div>
-            <p>3. Ask patient to name the third animal</p>
-            <div className="flex items-center gap-4">
-              <label>
-                <input
-                  type="radio"
-                  name="animal3"
-                  onChange={() => handleScoreChange('animal3', 1)}
-                />
-                Named camel
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="animal3"
-                  onChange={() => handleScoreChange('animal3', 0)}
-                />
-                Did not name camel
-              </label>
-            </div>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
-
-      {/* Additional Sections */}
-      {/* Memory, Attention, Language, Abstraction, Delayed recall, Orientation sections would follow the same structure */}
-
+      <QS_MOCA
+        title="Abstraction"
+        questions={questionsAbstraction}
+        handleScoreChange={handleScoreChange}
+      />
+      <div>
+        <div className="bg-gray-100 p-2 mb-4">
+          <span className="text-black w-full text-sm font-medium">
+            Delayed recall
+          </span>
+        </div>
+        <div className="text-black w-full text-sm font-thin">
+          Read "Face", "Velvet", "Church", "Daisy", "Red", and ask patient to
+          repaeate (do tow trial and a recall leter in exam)
+        </div>
+        <div className="text-[12px]">Check all the recalled words</div>
+        <div className="w-1/2 bg-blue-800">
+          <table className="text-[12px] border">
+            <TableHead headers={headersDR} />
+            <tbody className="border">
+              {trialsDR.map((trial, index) => (
+                <TrialSection
+                  key={index}
+                  trialNumber={trial.trialNumber}
+                  initialValues={trial.values}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div className="bg-gray-100 p-2 mb-4">
+          <span className="text-black w-full text-sm font-medium">
+            Orientation
+          </span>
+        </div>
+        <div className="text-black w-full text-sm font-thin">
+          1. Ask patient date,month, year, day, place and city
+        </div>
+        <div className="text-[12px]">Check all the recalled words</div>
+        <div className="w-1/2 bg-blue-800">
+          <table className="text-[12px] border">
+            {/* <TableHead headers={headersOR} /> */}
+            <thead className="t  text-gray-700 uppercase">
+              <tr>
+                {headersOR.map((header, index) => (
+                  <th
+                    key={index}
+                    className={`py-3 px-4 ${
+                      index === 0 ? "w-[12%] text-left" : "w-[12%] text-center"
+                    }`}
+                  >
+                    {header}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="border">
+              {trialsDR.map((trial, index) => (
+                <TrialSection
+                  key={index}
+                  trialNumber={trial.trialNumber}
+                  initialValues={trial.values}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
       {/* Score Interpretation */}
-      <div className={`p-4 rounded-md shadow-md ${scoreColor()}`}>
-        <div className="flex justify-between items-center">
-          <div className="font-semibold text-lg">Score Interpretation</div>
-          <div className="flex items-center text-sm gap-2">
+     <div className="flex justify-between border rounded-md bg-white shadow-md p-2">
+        <div className="flex gap-2 items-center">
+          <div className="text-sm">Score Interpretation</div>
+          <div className="flex items-center text-sm gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 bg-white border rounded-sm" />
+              <span>0-7 Subclinical Range</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 bg-green-300 border rounded-sm" />
+              <span>8-15 Mild</span>
+            </div>
+            
+          </div>
+        </div>
+        <div className="flex items-center text-sm gap-2">
+          <div
+            className={`flex items-center gap-2 rounded-2xl px-4 `}
+            // ${colorName}
+          >
             <span>Total Score: {totalScore}</span>
           </div>
-          <div>{totalScore >= 26 ? 'Normal' : 'Abnormal'}</div>
+          <div>{18}</div>
+          {/* <div>{interpretation}</div> */}
         </div>
       </div>
     </div>
