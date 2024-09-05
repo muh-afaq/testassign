@@ -25,11 +25,11 @@ const TableBody: React.FC<TableBodyProps> = ({
     <tbody>
       {questions.map((question) => (
         <tr key={question.id} className="border-b  hover:bg-gray-50">
-          <td className="py-4 px-4">
+          <td className="py-4 w-[40%] px-4 text-left">
             {question.id}. {question.question}
           </td>
           {valueLabels.map(({ value, label }) => (
-            <td key={value} className="py-4 px-4  ">
+            <td key={value} className="py-4 px-4 text-center w-[12%] ">
               <input
                 type="radio"
                 name={`question${question.id}`}

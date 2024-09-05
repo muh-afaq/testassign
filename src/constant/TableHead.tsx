@@ -12,7 +12,7 @@ const TableHead: React.FC<TableHeadProps> = ({ headers }) => {
           <th
             key={index}
             className={`py-3 px-4 ${
-              index === 0 ? "w-[40%] text-left" : "text-left"
+              index === 0 ? "w-[40%] text-left" : "w-[12%] text-center"
             }`}
           >
             {header}

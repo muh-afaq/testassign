@@ -9,6 +9,7 @@ import Dashboard from "@/screen/Dashboard";
 import SNAP_IV from "@/screen/SNAP_IV";
 import PCL_5 from "@/screen/PCL_5";
 import Y_BOCS from "@/screen/Y_BOCS";
+import AIMS from "@/screen/AIMS";
 
 const Page: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState("");
@@ -40,6 +41,8 @@ const Page: React.FC = () => {
       return <PCL_5 />;
     } else if (selectedTab === "Y-BOCS") {
       return <Y_BOCS />;
+    } else if (selectedTab === "AIMS") {
+      return <AIMS />;
     } else {
       return (
         <div className="text-gray-500">Select a tab to view its content.</div>
