@@ -105,7 +105,7 @@ const Page: React.FC = () => {
             <span>History</span>
           </div>
           <div className="flex items-center gap-2 bg-blue-900 text-white border p-1 rounded-sm cursor-pointer">
-            <LiaSaveSolid />
+             <LiaSaveSolid /> 
             <span>Save</span>
           </div>
         </div>

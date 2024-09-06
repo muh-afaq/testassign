@@ -14,13 +14,14 @@ const MOCA = () => {
   const [scores, setScores] = useState<{ [key: string]: number }>({});
   const [totalScore, setTotalScore] = useState(0);
 
-  const questionsVE: Question[] = [
+  const questions = [
     {
       id: 1,
-      question: "Ask Patient to trace the diagram in order",
+      question:
+        "Read list of digits (2, 1, 8, 5, 4) at 1 digit/sec and ask patient to repeat them in the forward order",
       options: [
-        { value: 0, label: "Not Completed" },
-        { value: 1, label: "+1 Completed Correctly" },
+        { value: 1, label: "+1 Repeated correctly" },
+        { value: 0, label: "Did not repeat correctly" },
       ],
     },
     {
@@ -34,25 +35,17 @@ const MOCA = () => {
 
     {
       id: 3,
-      question: "Ask patient to draw a clock (ten past eleven)",
+      question:
+        "Ask patient to do five serial 7 subtractions starting at 100; patient should say 93, 86, 79, 72, 65",
       options: [
-        {
-          value: 3,
-          label:
-            "+3 Correctly drew all features (i.e., contour, numbers, and hands)",
-        },
-        {
-          value: 2,
-          label:
-            "+2 Correctly drew two out of three features (i.e., two out of contour, numbers, and hands)",
-        },
-        { value: 1, label: "+1 Correctly drew contour only" },
-        { value: 1, label: "+1 Correctly drew numbers only" },
-        { value: 1, label: "+1 Correctly drew hands only" },
-        { value: 0, label: "None of the above" },
+        { value: 3, label: "+3 4 or 5 correct" },
+        { value: 2, label: "+2 2 or 3 correct" },
+        { value: 1, label: "+1 1 correct" },
+        { value: 0, label: "0 correct" },
       ],
     },
   ];
+  
   const questionsNeaming: Question[] = [
     {
       id: 1,
@@ -128,14 +121,7 @@ const MOCA = () => {
     });
   };
 
-  const scoreColor = () => {
-    if (totalScore >= 26) {
-      return "bg-green-100 text-green-800";
-    } else if (totalScore >= 0 && totalScore <= 25) {
-      return "bg-red-100 text-red-800";
-    }
-    return "";
-  };
+  
 
   return (
     <div className="overflow-auto p-4 bg-white rounded-lg shadow-md">
@@ -145,13 +131,14 @@ const MOCA = () => {
 
       <QS_MOCA
         title="Visuospatial / Executive"
-        questions={questionsVE}
+        questions={questions}
         handleScoreChange={handleScoreChange}
       />
       <QS_MOCA
         title="Neaming"
         questions={questionsNeaming}
         handleScoreChange={handleScoreChange}
+  
       />
       <div>
         <div className="bg-gray-100 p-2 mb-4">
@@ -178,10 +165,31 @@ const MOCA = () => {
         </div>
       </div>
       <QS_MOCA
+        title="Attention"
+        questions={questionsAbstraction}
+        handleScoreChange={handleScoreChange}
+       
+      />
+      <QS_MOCA
+        title=""
+        questions={questionsAbstraction}
+        handleScoreChange={handleScoreChange}
+       
+      />
+      <QS_MOCA
+        title="Language"
+        questions={questionsAbstraction}
+        handleScoreChange={handleScoreChange}
+        
+      />
+      <QS_MOCA
         title="Abstraction"
         questions={questionsAbstraction}
         handleScoreChange={handleScoreChange}
+        
       />
+      
+
       <div>
         <div className="bg-gray-100 p-2 mb-4">
           <span className="text-black w-full text-sm font-medium">
@@ -248,7 +256,7 @@ const MOCA = () => {
         </div>
       </div>
       {/* Score Interpretation */}
-     <div className="flex justify-between border rounded-md bg-white shadow-md p-2">
+      <div className="flex justify-between border rounded-md bg-white shadow-md p-2">
         <div className="flex gap-2 items-center">
           <div className="text-sm">Score Interpretation</div>
           <div className="flex items-center text-sm gap-4">
@@ -260,7 +268,6 @@ const MOCA = () => {
               <div className="w-4 h-4 bg-green-300 border rounded-sm" />
               <span>8-15 Mild</span>
             </div>
-            
           </div>
         </div>
         <div className="flex items-center text-sm gap-2">
