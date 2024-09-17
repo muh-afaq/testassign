@@ -43,11 +43,12 @@ const questionData = [
   },
 ];
 
-interface SectionWidth {
-  width: number;
-}
+// interface SectionWidth {
+//   width: number;
+// }
 
-const SectionFiled = ({ width }: SectionWidth) => {
+// const SectionFiled = ({ width }: SectionWidth) => {
+const SectionFiled = () => {
   return (
     <Flex wrap="wrap" className="p-2">
       {" "}
@@ -56,7 +57,7 @@ const SectionFiled = ({ width }: SectionWidth) => {
         <Box
           key={question.id}
           p="4"
-          className={`w-[${width}%] h-40 ${
+          className={`w-1/2 h-40 ${
             /* Set the width for two columns */
             index % 3 === 0 ? "bg-gray-100" : "bg-gray-200"
           }`}

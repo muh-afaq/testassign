@@ -42,7 +42,8 @@ interface SectionWidth {
   width: number;
 }
 
-const SectionFiled1 = ({ width }: SectionWidth) => {
+// const SectionFiled1 = ({ width }: SectionWidth) => {
+const SectionFiled1 = () => {
   return (
     <Flex wrap="wrap" className="p-2">
       {" "}
@@ -51,7 +52,7 @@ const SectionFiled1 = ({ width }: SectionWidth) => {
         <Box
           key={question.id}
           p="4"
-          className={`w-[${width}%] h-52 ${
+          className={`w-1/3 h-52 ${
             /* Set the width for two columns */
             index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
           }`}

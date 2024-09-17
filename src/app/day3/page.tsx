@@ -9,9 +9,9 @@ const page = () => {
     <main>
       <Header />
       <Title title="Visuosptial / Execuite" />
-      <SectionFiled1 width={33} />
+      <SectionFiled1 />
       <Title title="Attention" />
-      <SectionFiled width={50} />
+      <SectionFiled  />
     </main>
   );
 };
