@@ -1,4 +1,10 @@
+/* import '@radix-ui/themes/styles.css'; */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Custom styling for form sections, buttons, and text */
+section {
+    background-color: #f9f9f9;
+  }
