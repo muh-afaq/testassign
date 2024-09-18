@@ -8,7 +8,7 @@ interface QuestionProps {
 
 const Question = ({ questionText, questionId }: QuestionProps) => {
   return (
-    <Flex  gap="2" className="mb-4"> {/* Aligning the number and question text */}
+    <Flex  gap="2" className="mb-4 w-auto"> {/* Aligning the number and question text */}
       <Text size="2" weight="bold" color="gray">{questionId}.</Text>
       <Text size="2" weight="bold" color="gray">{questionText}</Text>
     </Flex>
