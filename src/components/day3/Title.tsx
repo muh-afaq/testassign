@@ -7,7 +7,7 @@ interface titleProps {
 
 const Title = ({ title }: titleProps) => {
   return (
-    <div className="p-2">
+    <div className="px-2">
       <Flex height={"12px"} align={"center"} className="p-4 bg-gray-200">
         <Text size={"4"} weight={"medium"}>
           {title}
