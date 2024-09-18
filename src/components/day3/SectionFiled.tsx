@@ -22,7 +22,7 @@ const SectionFiled = ({
   questionData,
 }: SectionFiledProps) => {
   return (
-    <Flex wrap="wrap" className="px-2">
+    <Flex wrap="wrap" className="px-2 w-full">
       {questionData.map((question, index) => (
         <Box
           key={question.id}
