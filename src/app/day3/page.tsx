@@ -188,7 +188,7 @@ const memoryData = {
       ],
     },
   ],
-  pointscor:""
+  pointscor: "",
 };
 
 const memoryData1 = {
@@ -218,8 +218,7 @@ const memoryData1 = {
       ],
     },
   ],
-  pointscor:"1 point per word recalled without cue"
-
+  pointscor: "1 point per word recalled without cue",
 };
 const memoryData2 = {
   description:
@@ -228,7 +227,6 @@ const memoryData2 = {
   headers: ["Date", "Month", "Day", "Place", "City"], // Column headers for words
   trails: [
     {
-     
       options: [
         { label: "Yes" }, // Checkbox option for "Face"
         { label: "Yes" }, // Checkbox option for "Velvet"
@@ -237,10 +235,8 @@ const memoryData2 = {
         { label: "Yes" }, // Checkbox option for "Red"
       ],
     },
-    
   ],
-  pointscor:"1 point per checkmark"
-
+  pointscor: "1 point per checkmark",
 };
 
 const page = () => {
@@ -249,15 +245,15 @@ const page = () => {
       <Header />
       <Title title="Visuosptial / Execuite" />
       <SectionFiled
-        width="1/3"
-        height="58"
+        width="w-1/3"
+        height="h-58"
         indexNo={2}
         questionData={QuestionDataS1}
       />
       <Title title="Naming" />
       <SectionFiled
-        width="1/3"
-        height="40"
+        width="w-1/3"
+        height="h-40"
         indexNo={2}
         questionData={QuestionDataS2}
       />
@@ -266,22 +262,22 @@ const page = () => {
 
       <Title title="Attention" />
       <SectionFiled
-        width="1/2"
-        height="48"
+        width="w-1/2"
+        height="h-48"
         indexNo={3}
         questionData={QuestionDataS3}
       />
       <Title title="Language" />
       <SectionFiled
-        width="1/2"
-        height="48"
+        width="w-1/2"
+        height="h-48"
         indexNo={3}
         questionData={QuestionDataS4}
       />
       <Title title="Abstraction" />
       <SectionFiled
-        width="1/2"
-        height="48"
+        width="w-1/2"
+        height="h-48"
         indexNo={3}
         questionData={QuestionDataS5}
       />
