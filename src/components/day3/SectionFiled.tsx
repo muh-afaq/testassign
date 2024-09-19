@@ -1,47 +1,53 @@
-import { Flex, Box } from "@radix-ui/themes";
+import { Box, Flex, Radio, Text } from "@radix-ui/themes";
 import React from "react";
-import Question from "./Question";
-import Radiofiled from "./Radiofiled";
 
-// Interface for props
 interface SectionFiledProps {
   width: string;
   height: string;
   indexNo: number;
-  questionData: Array<{
-    id: string;
-    questionText: string;
-    answers: Array<{ value: string; valueLable: string; label: string }>;
-  }>;
+  questionData: any;
+  register: any;
+  sectionKey: string;
 }
 
-const SectionFiled = ({
+const SectionFiled: React.FC<SectionFiledProps> = ({
   width,
   height,
   indexNo,
   questionData,
-}: SectionFiledProps) => {
+  register,
+  sectionKey,
+}) => {
   return (
     <Flex wrap="wrap" className="px-2 ">
-      {questionData.map((question, index) => (
+      {questionData.map((question: any, questionIndex: number) => (
         <Box
           key={question.id}
           p="4"
           className={`${width} ${height} ${
-            index % indexNo === 0 ? "bg-white" : "bg-gray-100"
+            questionIndex % indexNo === 0 ? "bg-white" : "bg-gray-100"
           }`}
         >
-          {/* Question Component */}
-          <Question
-            questionId={question.id}
-            questionText={question.questionText}
-          />
-
-          {/* RadioField Component */}
-          <Radiofiled
-            defaultValue={question.answers[0].value}
-            options={question.answers}
-          />
+          <Flex gap="2" className="mb-4 ">
+            <Text size="2" weight="bold" color="gray">
+              {question.id}.
+            </Text>
+            <Text size="2" weight="bold" color="gray">
+              {question.questionText}
+            </Text>
+          </Flex>
+          {question.answers.map((answer: any, answerIndex: number) => (
+            <Flex key={answer.value} gap={"2"} className="mb-3">
+              <Radio
+                {...register(`${sectionKey}[${questionIndex}]`, {
+                  required: true,
+                })}
+                value={answer.value}
+              />
+              <Text size={"2"}>{answer.valueLable}</Text>
+              <Text size={"2"}>{answer.label}</Text>
+            </Flex>
+          ))}
         </Box>
       ))}
     </Flex>

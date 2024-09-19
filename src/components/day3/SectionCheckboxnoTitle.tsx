@@ -1,13 +1,15 @@
-import { Checkbox, Flex, Table, Text } from "@radix-ui/themes";
+import { Checkbox, CheckboxGroup, Flex, Table, Text } from "@radix-ui/themes";
 import React from "react";
 
 // Define the structure for props
 interface SectionCheckboxProps {
-  description: string; // The description text above the table
+  description: string;
+  instruction: string;
+  headers: string[];
+  trails: any[];
   pointscor: string;
-  instruction: string; // Instruction text for the table
-  headers: string[]; // Table column headers (for words like Face, Velvet, etc.)
-  trails: Array<{ options: Array<{ label: string }> }>; // List of trails with checkbox options
+  register: any;
+  sectionKey: string;
 }
 
 const SectionCheckboxnoTitle = ({
@@ -16,18 +18,24 @@ const SectionCheckboxnoTitle = ({
   headers,
   trails,
   pointscor,
+  register,
+  sectionKey,
 }: SectionCheckboxProps) => {
   return (
     <Flex direction={"column"} className="p-3">
-      <Text>{description}</Text>
-      <Text>{instruction}</Text>
+      <Text size={"3"} weight={"bold"}>
+        {description}
+      </Text>
+      <Text size={"2"} weight={"medium"}>
+        {instruction}
+      </Text>
 
       <Table.Root size={"1"} variant="surface" className="w-[50%]">
-        <Table.Header>
+        <Table.Header className="bg-blue-100">
           <Table.Row>
             {/* Dynamically render table headers */}
-            {headers.map((header) => (
-              <Table.ColumnHeaderCell key={header}>
+            {headers.map((header: string, index: number) => (
+              <Table.ColumnHeaderCell key={index}>
                 {header}
               </Table.ColumnHeaderCell>
             ))}
@@ -35,14 +43,20 @@ const SectionCheckboxnoTitle = ({
         </Table.Header>
 
         <Table.Body>
-          {/* Render each trail and its associated checkboxes */}
-          {trails.map((trail, index) => (
-            <Table.Row key={index}>
-              {trail.options.map((option, optionIndex) => (
+          {trails.map((trail: any, trailIndex: number) => (
+            <Table.Row key={trailIndex}>
+              {trail.options.map((option: any, optionIndex: number) => (
                 <Table.Cell key={optionIndex}>
                   <Flex align="center" gap="2">
-                    <Checkbox />
-                    <Text>{option.label}</Text>
+                    <CheckboxGroup.Root
+                      {...register(
+                        `${sectionKey}[${trailIndex}][${optionIndex}]`
+                      )}
+                    >
+                      <CheckboxGroup.Item value={option.label}>
+                        {option.label}
+                      </CheckboxGroup.Item>
+                    </CheckboxGroup.Root>
                   </Flex>
                 </Table.Cell>
               ))}
@@ -50,7 +64,7 @@ const SectionCheckboxnoTitle = ({
           ))}
         </Table.Body>
       </Table.Root>
-      <Text>{pointscor}</Text>
+      <Text size={"2"}>{pointscor}</Text>
     </Flex>
   );
 };
