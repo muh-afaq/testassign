@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxGroup, Flex, Table, Text } from "@radix-ui/themes";
+import { CheckboxGroup, Flex, Table, Text } from "@radix-ui/themes";
 import React from "react";
 
 interface SectionCheckboxProps {
@@ -30,7 +30,7 @@ const SectionCheckbox = ({
       </Text>
 
       <Table.Root size={"1"} variant="surface" className="w-[60%]">
-        <Table.Header className="bg-blue-100">
+        <Table.Header className="bg-blue-50">
           <Table.Row>
             <Table.ColumnHeaderCell>Trail</Table.ColumnHeaderCell>
             {headers.map((header: string, index: number) => (
@@ -42,8 +42,11 @@ const SectionCheckbox = ({
         </Table.Header>
         <Table.Body>
           {trails.map((trail: any, trailIndex: number) => (
-            <Table.Row key={trailIndex}>
-              <Table.RowHeaderCell>{trail.trailName}</Table.RowHeaderCell>
+            <Table.Row key={trailIndex} className="bg-blue-50">
+              {/* <div > */}
+              <Table.RowHeaderCell className="">{trail.trailName}</Table.RowHeaderCell>
+
+              {/* </div> */}
 
               {trail.options.map((option: any, optionIndex: number) => (
                 <Table.Cell key={optionIndex}>

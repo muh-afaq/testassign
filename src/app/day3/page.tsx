@@ -3,7 +3,7 @@ import Header from "@/components/day3/Header";
 import SectionFiled from "@/components/day3/SectionFiled";
 import SectionCheckbox from "@/components/day3/SectionCheckbox";
 import Title from "@/components/day3/Title";
-import React, { useRef } from "react";
+import React from "react";
 import SectionCheckboxnoTitle from "@/components/day3/SectionCheckboxnoTitle";
 import { useForm, SubmitHandler } from "react-hook-form";
 import {

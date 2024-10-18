@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxGroup, Flex, Table, Text } from "@radix-ui/themes";
+import { CheckboxGroup, Flex, Table, Text } from "@radix-ui/themes";
 import React from "react";
 
 // Define the structure for props
@@ -31,7 +31,7 @@ const SectionCheckboxnoTitle = ({
       </Text>
 
       <Table.Root size={"1"} variant="surface" className="w-[50%]">
-        <Table.Header className="bg-blue-100">
+        <Table.Header className="bg-blue-50">
           <Table.Row>
             {/* Dynamically render table headers */}
             {headers.map((header: string, index: number) => (
