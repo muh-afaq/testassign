@@ -6,7 +6,7 @@ const page = () => {
   return (
     <div>
         <h1>First Task Text Editer</h1>
-      <TextEditer />
+      <TextEditer texteditable='Text Editer' />
       <h1> Scoend Task Text Editors List</h1>
       <TextEditorList />
     </div>
