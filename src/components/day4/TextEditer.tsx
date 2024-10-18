@@ -33,7 +33,7 @@ const TextEditor: React.FC<propsdata> = ({ texteditable }) => {
       <div className="flex space-x-4 mb-4">
         <Tooltip title="Bold">
           <Button
-            className="flex items-center justify-center w-10 h-10 bg-blue-500 text-white hover:bg-blue-600"
+            className="flex items-center justify-center w-10 h-10 text-black text-xl hover:bg-blue-600"
             onClick={() => applyFormat("bold")}
           >
             <b>B</b>
@@ -42,7 +42,7 @@ const TextEditor: React.FC<propsdata> = ({ texteditable }) => {
 
         <Tooltip title="Italic">
           <Button
-            className="flex items-center justify-center w-10 h-10 bg-green-500 text-white hover:bg-green-600"
+            className="flex items-center justify-center w-10 h-10  text-black text-xl hover:bg-green-600"
             onClick={() => applyFormat("italic")}
           >
             <i>I</i>
@@ -51,7 +51,7 @@ const TextEditor: React.FC<propsdata> = ({ texteditable }) => {
 
         <Tooltip title="Insert Emoji">
           <Button
-            className="flex items-center justify-center w-10 h-10 bg-yellow-400 text-white hover:bg-yellow-500"
+            className="flex items-center justify-center w-10 h-10  text-white hover:bg-yellow-500"
             onClick={() => addEmoji("😊")}
           >
             😊
