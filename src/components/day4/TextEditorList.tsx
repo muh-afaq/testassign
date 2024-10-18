@@ -1,54 +1,93 @@
-'use client';
+"use client";
+import React, { useRef, useState } from "react";
+import { Tabs } from "antd";
+import TextEditor from "./TextEditer";
 
-import React, { useState } from 'react';
-import { Button, Card, Row, Col, Space } from 'antd';
-import TextEditer from './TextEditer';
+type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 
-interface Editor {
-  id: number;
-}
+const initialItems = [
+  { label: "Card 1", children: <TextEditor  texteditable='Card 1' />, key: "1" },
+  { label: "Card 2", children: <TextEditor texteditable='Card 2'/>, key: "2" },
+  {
+    label: "Card 3",
+    children: <TextEditor texteditable='Card 3'/>,
+    key: "3",
+  },
+];
 
 const TextEditorList: React.FC = () => {
-  const [editors, setEditors] = useState<Editor[]>([
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-  ]);
+  const [activeKey, setActiveKey] = useState(initialItems[0].key);
+  const [items, setItems] = useState(initialItems);
+  const newTabIndex = useRef(0);
 
-  const removeEditor = (id: number) => {
-    const filteredEditors = editors.filter((editor) => editor.id !== id);
-    setEditors(filteredEditors);
+  const onChange = (newActiveKey: string) => {
+    setActiveKey(newActiveKey);
+  };
+
+  const add = () => {
+    // Find the highest key (as number) in the current tabs
+    const highestKey = Math.max(...items.map(item => parseInt(item.key, 10)), 0);
+  
+    // Increment the key to create the new one
+    const newKey = highestKey + 1;
+    const newTabLabel = `Card ${newKey}`; // Label will be "Card 4", "Card 5", etc.
+  
+    // Add the new tab with the updated label and key
+    const newPanes = [
+      ...items,
+      {
+        label: newTabLabel, 
+        children: <TextEditor texteditable={newTabLabel} />, 
+        key: newKey.toString(),  // Ensure key is a string for compatibility
+      },
+    ];
+  
+    // Set the new tab as the active one
+    setItems(newPanes);
+    setActiveKey(newKey.toString()); // Set the new tab as the active tab
+  };
+  
+  
+
+  const remove = (targetKey: TargetKey) => {
+    let newActiveKey = activeKey;
+    let lastIndex = -1;
+    items.forEach((item, i) => {
+      if (item.key === targetKey) {
+        lastIndex = i - 1;
+      }
+    });
+    const newPanes = items.filter((item) => item.key !== targetKey);
+    if (newPanes.length && newActiveKey === targetKey) {
+      if (lastIndex >= 0) {
+        newActiveKey = newPanes[lastIndex].key;
+      } else {
+        newActiveKey = newPanes[0].key;
+      }
+    }
+    setItems(newPanes);
+    setActiveKey(newActiveKey);
+  };
+
+  const onEdit = (
+    targetKey: React.MouseEvent | React.KeyboardEvent | string,
+    action: "add" | "remove"
+  ) => {
+    if (action === "add") {
+      add();
+    } else {
+      remove(targetKey);
+    }
   };
 
   return (
-    <div className="w-full mx-auto p-4">
-      <Row gutter={[16, 16]} justify="center">
-        {editors.map((editor) => (
-          <Col
-            key={editor.id}
-            xs={24} sm={12} md={8} lg={6}
-            className="flex justify-center"
-          >
-            <Card
-              title={<h3 className="text-lg font-medium">Text Editor {editor.id}</h3>}
-              extra={
-                <Button
-                  type="primary"
-                  danger
-                  onClick={() => removeEditor(editor.id)}
-                >
-                  Remove
-                </Button>
-              }
-              className="w-full"
-            >
-              <TextEditer />
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </div>
+    <Tabs
+      type="editable-card"
+      onChange={onChange}
+      activeKey={activeKey}
+      onEdit={onEdit}
+      items={items}
+    />
   );
 };
 
