@@ -1,64 +1,89 @@
-"use client";
+'use client';
 
-import { Flex, Button, TextField } from "@radix-ui/themes";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef } from 'react';
+import { Button, Input, Typography, Tooltip } from 'antd'; 
+import 'antd/dist/reset.css'; 
+import 'tailwindcss/tailwind.css'; 
 
-interface TextEditorProps {}
+const { Text } = Typography;
 
-const TextEditer: React.FC<TextEditorProps> = () => {
-  const [variableCounter, setVariableCounter] = useState<number>(1); // For {{1}}, {{2}}, etc.
-  const editorRef = useRef<HTMLDivElement>(null); // Ref for the editable div
+const TextEditor: React.FC = () => {
+  const [variableCounter, setVariableCounter] = useState<number>(1);
+  const editorRef = useRef<HTMLDivElement>(null);
 
-  // Handle formatting for bold, italic
   const applyFormat = (command: string) => {
-    document.execCommand(command, false);
+    document.execCommand(command, false, '');
   };
 
-  // Handle adding variables {{1}}, {{2}}, etc.
   const addVariable = () => {
     const variableText = `{{ ${variableCounter} }}`;
-    document.execCommand("insertText", false, variableText);
-    setVariableCounter(variableCounter + 1); // Increment the counter
+    document.execCommand('insertText', false, variableText);
+    setVariableCounter(variableCounter + 1); // Increment counter
   };
 
-  // Handle inserting an emoji
   const addEmoji = (emoji: string) => {
-    document.execCommand("insertText", false, emoji);
+    document.execCommand('insertText', false, emoji);
   };
 
   return (
-    <Flex direction="column" className="text-editer-container" gap="3">
-      {/* Formatting buttons */}
-      <Flex gap="2" mb="2">
-        <Button variant="soft" onClick={() => applyFormat("bold")}>
-          Bold
-        </Button>
-        <Button variant="soft" onClick={() => applyFormat("italic")}>
-          Italic
-        </Button>
-        <Button variant="soft" onClick={() => addEmoji("😊")}>
-          Add Emoji 😊
-        </Button>
-        <Button variant="soft" onClick={addVariable}>
+    <div className="w-full mx-auto p-6  bg-white rounded-lg shadow-lg">
+      {/* Formatting Buttons */}
+      <div className="flex space-x-4 mb-4">
+        <Tooltip title="Bold">
+          <Button
+            className="flex items-center justify-center w-10 h-10 bg-blue-500 text-white hover:bg-blue-600"
+            onClick={() => applyFormat('bold')}
+          >
+            <b>B</b>
+          </Button>
+        </Tooltip>
+
+        <Tooltip title="Italic">
+          <Button
+            className="flex items-center justify-center w-10 h-10 bg-green-500 text-white hover:bg-green-600"
+            onClick={() => applyFormat('italic')}
+          >
+            <i>I</i>
+          </Button>
+        </Tooltip>
+
+        <Tooltip title="Insert Emoji">
+          <Button
+            className="flex items-center justify-center w-10 h-10 bg-yellow-400 text-white hover:bg-yellow-500"
+            onClick={() => addEmoji('😊')}
+          >
+            😊
+          </Button>
+        </Tooltip>
+      </div>
+
+      {/* Editable text area */}
+      <div
+        ref={editorRef}
+        contentEditable
+        suppressContentEditableWarning
+        className="border p-4 w-full h-40 rounded bg-gray-100 shadow-md focus:outline-none"
+        style={{ minHeight: '160px' }}
+      >
+        <Text className="text-black">Type your text here...</Text>
+      </div>
+
+      {/* Add Variable Button */}
+      <div className="mt-6 flex justify-between items-center">
+        <Button
+          className="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700"
+          onClick={addVariable}
+          type="primary"
+        >
           Add Variable
         </Button>
-      </Flex>
 
-      {/* Text editor area */}
-      <TextField.Root
-        ref={editorRef as React.RefObject<HTMLInputElement>}
-        contentEditable={true}
-        suppressContentEditableWarning={true}
-        placeholder="Write your text here..."
-        className="border p-4 w-full bg-white rounded shadow-sm"
-        style={{
-          outline: "none",
-          height: "200px",
-          flexDirection: "column",
-        }}
-      ></TextField.Root>
-    </Flex>
+        <Text type="secondary" className="text-right text-sm">
+          Max 1024 Characters
+        </Text>
+      </div>
+    </div>
   );
 };
 
-export default TextEditer;
+export default TextEditor;
