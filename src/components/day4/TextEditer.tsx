@@ -2,8 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import { Button, Input, Typography, Tooltip } from 'antd'; 
-import 'antd/dist/reset.css'; 
-import 'tailwindcss/tailwind.css'; 
+
 
 const { Text } = Typography;
 

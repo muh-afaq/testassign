@@ -3,8 +3,6 @@
 import React, { useState } from 'react';
 import { Button, Card, Row, Col, Space } from 'antd';
 import TextEditer from './TextEditer';
-import 'antd/dist/reset.css'; 
-import 'tailwindcss/tailwind.css'; 
 
 interface Editor {
   id: number;
